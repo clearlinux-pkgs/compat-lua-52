@@ -1,0 +1,76 @@
+From e61bb9852913399bfd3348b8d06a4de50bd34648 Mon Sep 17 00:00:00 2001
+From: Auke Kok <auke-jan.h.kok@intel.com>
+Date: Mon, 13 Feb 2017 13:41:31 -0800
+Subject: [PATCH] Build fixes
+
+---
+ Makefile     | 14 +++++++-------
+ lua52.pc     | 11 +++++++++++
+ src/Makefile |  2 +-
+ 3 files changed, 19 insertions(+), 8 deletions(-)
+ create mode 100644 lua52.pc
+
+diff --git a/Makefile b/Makefile
+index b2a62cf..6938f60 100644
+--- a/Makefile
++++ b/Makefile
+@@ -4,19 +4,19 @@
+ # == CHANGE THE SETTINGS BELOW TO SUIT YOUR ENVIRONMENT =======================
+ 
+ # Your platform. See PLATS for possible values.
+-PLAT= none
++PLAT= linux
+ 
+ # Where to install. The installation starts in the src and doc directories,
+ # so take care if INSTALL_TOP is not an absolute path. See the local target.
+ # You may want to make INSTALL_LMOD and INSTALL_CMOD consistent with
+ # LUA_ROOT, LUA_LDIR, and LUA_CDIR in luaconf.h.
+-INSTALL_TOP= /usr/local
++INSTALL_TOP= $(DESTDIR)/usr
+ INSTALL_BIN= $(INSTALL_TOP)/bin
+-INSTALL_INC= $(INSTALL_TOP)/include
+-INSTALL_LIB= $(INSTALL_TOP)/lib
+-INSTALL_MAN= $(INSTALL_TOP)/man/man1
+-INSTALL_LMOD= $(INSTALL_TOP)/share/lua/$V
+-INSTALL_CMOD= $(INSTALL_TOP)/lib/lua/$V
++INSTALL_INC= $(INSTALL_TOP)/include/lua-5.2
++INSTALL_LIB= $(INSTALL_TOP)/lib64
++INSTALL_MAN= $(INSTALL_TOP)/share/man/man1
++INSTALL_LMOD= $(INSTALL_TOP)/share/lua-5.2/$V
++INSTALL_CMOD= $(INSTALL_TOP)/lib64/lua-5.2/$V
+ 
+ # How to install. If your install program does not support "-p", then
+ # you may have to run ranlib on the installed liblua.a.
+diff --git a/lua52.pc b/lua52.pc
+new file mode 100644
+index 0000000..c7e819b
+--- /dev/null
++++ b/lua52.pc
+@@ -0,0 +1,11 @@
++prefix = /usr
++exec_prefix = ${prefix}
++libdir = /usr/lib64
++includedir = ${prefix}/include/lua-5.2
++
++Version: 5.2.4
++Name: Lua52
++Description: An Extensible Extension Language
++Requires:
++Libs: -L/usr/lib64/liblua5.2.a
++Cflags: -I${includedir}
+diff --git a/src/Makefile b/src/Makefile
+index 7b4b2b7..c0f2381 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -4,7 +4,7 @@
+ # == CHANGE THE SETTINGS BELOW TO SUIT YOUR ENVIRONMENT =======================
+ 
+ # Your platform. See PLATS for possible values.
+-PLAT= none
++PLAT= linux
+ 
+ CC= gcc
+ CFLAGS= -O2 -Wall -DLUA_COMPAT_ALL $(SYSCFLAGS) $(MYCFLAGS)
+-- 
+2.20.1
+

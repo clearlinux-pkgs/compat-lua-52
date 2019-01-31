@@ -1,0 +1,7 @@
+mkdir -p %{buildroot}/usr/lib64/pkgconfig
+cp lua52.pc %{buildroot}/usr/lib64/pkgconfig/lua52.pc
+mv %{buildroot}/usr/bin/lua %{buildroot}/usr/bin/lua5.2
+mv %{buildroot}/usr/bin/luac %{buildroot}/usr/bin/luac5.2
+mv %{buildroot}/usr/share/man/man1/lua.1 %{buildroot}/usr/share/man/man1/lua5.2.1
+mv %{buildroot}/usr/share/man/man1/luac.1 %{buildroot}/usr/share/man/man1/luac5.2.1
+cp src/liblua.a %{buildroot}/usr/lib64/liblua5.2.a
