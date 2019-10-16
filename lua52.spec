@@ -4,7 +4,7 @@
 #
 Name     : lua52
 Version  : 5.2.4
-Release  : 2
+Release  : 3
 URL      : https://www.lua.org/ftp/lua-5.2.4.tar.gz
 Source0  : https://www.lua.org/ftp/lua-5.2.4.tar.gz
 Summary  : No detailed summary available
