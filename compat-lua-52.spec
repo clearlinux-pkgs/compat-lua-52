@@ -4,7 +4,7 @@
 #
 Name     : compat-lua-52
 Version  : 5.2.4
-Release  : 5
+Release  : 6
 URL      : https://www.lua.org/ftp/lua-5.2.4.tar.gz
 Source0  : https://www.lua.org/ftp/lua-5.2.4.tar.gz
 Summary  : No detailed summary available
@@ -69,10 +69,10 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
 export SOURCE_DATE_EPOCH=1613674949
 export GCC_IGNORE_WERROR=1
-export CFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
-export FCFLAGS="$FFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
-export FFLAGS="$FFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
-export CXXFLAGS="$CXXFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
+export CFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
+export FCFLAGS="$FFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
+export FFLAGS="$FFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
+export CXXFLAGS="$CXXFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
 make  %{?_smp_mflags}  MYCFLAGS="${CFLAGS} -fpic" MYLIBS="-lncurses -lm"
 
 
