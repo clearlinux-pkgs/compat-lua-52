@@ -4,7 +4,7 @@
 #
 Name     : compat-lua-52
 Version  : 5.2.4
-Release  : 6
+Release  : 7
 URL      : https://www.lua.org/ftp/lua-5.2.4.tar.gz
 Source0  : https://www.lua.org/ftp/lua-5.2.4.tar.gz
 Summary  : No detailed summary available
@@ -67,17 +67,17 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1613674949
+export SOURCE_DATE_EPOCH=1664892352
 export GCC_IGNORE_WERROR=1
-export CFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
-export FCFLAGS="$FFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
-export FFLAGS="$FFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
-export CXXFLAGS="$CXXFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
+export CFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$FFLAGS -fno-lto "
+export FFLAGS="$FFLAGS -fno-lto "
+export CXXFLAGS="$CXXFLAGS -fno-lto "
 make  %{?_smp_mflags}  MYCFLAGS="${CFLAGS} -fpic" MYLIBS="-lncurses -lm"
 
 
 %install
-export SOURCE_DATE_EPOCH=1613674949
+export SOURCE_DATE_EPOCH=1664892352
 rm -rf %{buildroot}
 %make_install
 ## install_append content
